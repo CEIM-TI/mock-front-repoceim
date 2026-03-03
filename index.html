@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Documentos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#041e42', 
+              secondary: '#f1e434',
+              dark: '#1a1a1a',
+              gray: '#f4f4f4',
+              border: '#e0e0e0',
+              sidebar: '#f8f8f8'
+            },
+            sharepoint: '#0078d4',
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.42.0"
+  }
+}
+</script>
+<style>
+  /* Custom scrollbar for better look */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; 
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased h-screen flex overflow-hidden">
+  <div id="root" class="w-full h-full flex"></div>
+  <!-- Use ES Module for the React entry point -->
+  <script type="module" src="./index.tsx"></script>
+</body>
+</html>
