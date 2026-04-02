@@ -19,14 +19,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
 
   const handleAction = (action: string) => {
     onAction(action);
-    if(window.innerWidth < 1024) onClose(); // Cierra en móvil al hacer clic
+    if (window.innerWidth < 1024) onClose(); // Cierra en móvil al hacer clic
   }
 
   return (
     <>
       {/* Overlay para móvil */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-brand-primary/60 backdrop-blur-md z-40 lg:hidden transition-opacity"
           onClick={onClose}
         ></div>
@@ -34,16 +34,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
 
       {/* Menú lateral */}
       <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-brand-primary border-r border-blue-900 flex flex-col h-full text-white transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 shadow-2xl ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5 backdrop-blur-sm cursor-pointer" onClick={() => handleAction('home')}>
+        <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 transition-colors" onClick={() => handleAction('home')}>
           <div className="flex items-center space-x-3">
-            <div className="bg-brand-secondary p-2 rounded-xl shadow-lg">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-brand-primary">
-                 <path d="M19.14 4.58c.84 0 1.52.68 1.52 1.52v11.8c0 .84-.68 1.52-1.52 1.52H4.86c-.84 0-1.52-.68-1.52-1.52V6.1c0-.84.68-1.52 1.52-1.52h14.28zM12 6.55v4.54H7.55V6.55H12zm4.45 0v4.54h-4.45V6.55h4.45zm0 8.91v-4.36h-4.45v4.36h4.45zm-4.45 0v-4.36H7.55v4.36H12z"/>
-              </svg>
+            <div className="p-1.5 rounded-xl shadow-inner">
+              <img src="/imgs/logo-ceim-180.png" alt="CEIM Logo" className="w-10 h-auto" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-extrabold text-white tracking-wide uppercase">Gestor Doc</span>
-              <span className="text-[10px] text-brand-secondary font-semibold uppercase tracking-widest">CEIM Corporativo</span>
+              <span className="text-lg font-black text-white tracking-tight uppercase">Gestor <span className="text-brand-secondary">Doc</span></span>
+              <span className="text-[8px] text-white/40 font-bold uppercase tracking-[0.2em]">Plataforma Digital</span>
             </div>
           </div>
           <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="lg:hidden p-2 text-gray-400 hover:text-white">
@@ -65,20 +63,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
           </div>
           <button onClick={handleLogout} className="p-2 hover:bg-white/10 rounded-lg text-white/70 hover:text-white transition-colors" title="Cerrar sesión">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
             </svg>
           </button>
         </div>
-        
+
         <div className="p-4 flex flex-col space-y-2 mt-2">
-          <div 
+          <div
             onClick={() => handleAction('scan')}
             className="flex items-center justify-between bg-brand-secondary text-brand-primary hover:bg-[#d8c82d] p-3.5 rounded-xl text-sm font-extrabold cursor-pointer transition-all duration-200 shadow-md group"
           >
             <span className="flex items-center uppercase tracking-wider text-xs">Escanear Código QR</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 transform group-hover:scale-110 transition-transform">
-               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
-               <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
             </svg>
           </div>
         </div>
@@ -87,7 +85,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
           <h3 className="px-6 text-xs font-bold text-white/50 uppercase tracking-widest mb-4">Mis Documentos</h3>
           <ul className="space-y-1 px-3 text-sm">
             <li>
-              <div 
+              <div
                 onClick={() => handleAction('favorites')}
                 className={`flex items-center space-x-3 cursor-pointer p-3 rounded-xl transition-all duration-200 ${activeSpecialView === 'favorites' ? 'bg-white/20 text-brand-secondary' : 'hover:bg-white/10 text-white/80 hover:text-white'}`}
               >
@@ -98,7 +96,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
               </div>
             </li>
             <li>
-              <div 
+              <div
                 onClick={() => handleAction('popular')}
                 className={`flex items-center space-x-3 cursor-pointer p-3 rounded-xl transition-all duration-200 ${activeSpecialView === 'popular' ? 'bg-white/20 text-brand-secondary' : 'hover:bg-white/10 text-white/80 hover:text-white'}`}
               >
@@ -109,7 +107,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentUser, onLogout, isOpen,
               </div>
             </li>
             <li>
-              <div 
+              <div
                 onClick={() => handleAction('recent')}
                 className={`flex items-center space-x-3 cursor-pointer p-3 rounded-xl transition-all duration-200 ${activeSpecialView === 'recent' ? 'bg-white/20 text-brand-secondary' : 'hover:bg-white/10 text-white/80 hover:text-white'}`}
               >

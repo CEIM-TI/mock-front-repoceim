@@ -1,20 +1,14 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Gestor Dococumental CEIM
 
-# Run and deploy your AI Studio app
+Sistema para la administración de archivos y control de versiones.
 
-This contains everything you need to run your app locally.
+## Comandos
 
-View your app in AI Studio: https://ai.studio/apps/drive/1UKp9BOJUOYHDH4pQlIP_rzqhw7TgNZeR
+- Instalar dependencias: `npm install`
+- Correr modo desarrollo: `npm run dev`
+- Generar build: `npm run build`
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Tecnologías
+- React
+- Vite
+- Tailwind CSS

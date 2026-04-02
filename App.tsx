@@ -10,8 +10,6 @@ import { UploadModal } from './components/UploadModal';
 import { User, Gerencia, DocumentItem } from './types';
 import { MOCK_DATA } from './constants';
 import { getCurrentUser } from './services/authService';
-import { analyzeRepositoryStatus } from './services/geminiService';
-import { SparklesIcon } from './components/Icons';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -22,8 +20,6 @@ export default function App() {
   
   // Modals & States
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [aiReport, setAiReport] = useState<string | null>(null);
   const [isScannerOpen, setIsScannerOpen] = useState(false);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
 
@@ -137,18 +133,7 @@ export default function App() {
     handleSelectRelated(newDoc); // open it
   };
 
-  const handleAnalyze = useCallback(async (documentsToAnalyze: DocumentItem[]) => {
-    setIsAnalyzing(true);
-    setAiReport(null);
-    try {
-      const report = await analyzeRepositoryStatus(documentsToAnalyze);
-      setAiReport(report);
-    } catch (error) {
-      console.error("Failed to generate report", error);
-    } finally {
-      setIsAnalyzing(false);
-    }
-  }, []);
+
 
   if (!currentUser) {
     return <Login onLoginSuccess={setCurrentUser} />;
@@ -214,7 +199,7 @@ export default function App() {
       setNavPath({ gerenciaId: currentGerencia.id });
     }
     setSelectedDocId(undefined);
-    setAiReport(null);
+
   };
 
   const handleSidebarAction = (action: string) => {
@@ -300,25 +285,7 @@ export default function App() {
                    favorites={favorites}
                    onToggleFavorite={toggleFavorite}
                  />
-                 
-                 {(!isSearching && !specialView && currentArea) && (
-                   <button 
-                      onClick={() => handleAnalyze(docsToDisplay)}
-                      disabled={isAnalyzing || docsToDisplay.length === 0}
-                      className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 flex items-center px-5 py-3 sm:px-6 sm:py-4 bg-brand-primary text-brand-secondary rounded-2xl shadow-[0_8px_30px_rgb(4,30,66,0.3)] hover:shadow-[0_8px_30px_rgb(4,30,66,0.5)] hover:-translate-y-1 transition-all duration-300 z-10 disabled:opacity-70 disabled:hover:translate-y-0"
-                    >
-                      {isAnalyzing ? (
-                        <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-brand-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                      ) : (
-                        <div className="mr-2"><SparklesIcon /></div>
-                      )}
-                      <span className="font-extrabold uppercase tracking-widest text-xs sm:text-sm">Auditar con IA</span>
-                    </button>
-                 )}
-              </div>
+               </div>
             )}
           </div>
 
@@ -337,27 +304,7 @@ export default function App() {
 
         </div>
 
-        {aiReport && (
-          <div className="absolute bottom-20 right-4 sm:bottom-24 sm:right-8 w-[calc(100%-2rem)] sm:w-full max-w-lg bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 overflow-hidden z-[60] animate-slide-up-fade mx-auto sm:mx-0">
-            <div className="bg-brand-primary text-white px-5 py-4 flex justify-between items-center border-b border-white/10">
-              <div className="flex items-center font-extrabold text-brand-secondary uppercase tracking-widest text-xs sm:text-sm">
-                <SparklesIcon />
-                <span className="ml-2 text-white">Auditoría IA Gestor Doc</span>
-              </div>
-              <button 
-                onClick={() => setAiReport(null)}
-                className="text-gray-400 hover:text-brand-secondary hover:bg-white/10 p-1.5 rounded-lg transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div className="p-5 sm:p-6 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap max-h-[50vh] sm:max-h-[60vh] overflow-y-auto bg-gray-50/50">
-              {aiReport}
-            </div>
-          </div>
-        )}
+
       </main>
 
       <QRScannerModal 

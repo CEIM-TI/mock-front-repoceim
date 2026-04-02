@@ -92,20 +92,10 @@ export const MOCK_DATA: Gerencia[] = [
       { id: 'a-el', name: 'Electricidad', documents: [] },
       { id: 'a-inn', name: 'Innovación y tecnología instruccional', documents: [] },
       { id: 'a-di', name: 'Diseño instruccional', documents: [] },
-      { id: 'a-qa', name: 'Aseguramiento de Calidad', documents: [] },
-      { id: 'a-ma', name: 'Medio Ambiente', documents: [] },
-      { id: 'a-ss', name: 'Salud Ocupacional', documents: [] },
-      { id: 'a-cm', name: 'Comunicaciones', documents: [] },
-      { id: 'a-lg', name: 'Logística y Abastecimiento', documents: [] },
-      { id: 'a-ti', name: 'Tecnología de la Información', documents: [] },
     ]
   },
   { id: 'g-gaf', name: 'Gerencia Administración y Finanzas (GAF)', isActive: false, areas: [] },
   { id: 'g-grh', name: 'Gerencia Recursos Humanos (GRH)', isActive: false, areas: [] },
-  { id: 'g-go', name: 'Gerencia Operaciones (GO)', isActive: false, areas: [] },
-  { id: 'g-pe', name: 'Gerencia Proyectos Estratégicos (GPE)', isActive: false, areas: [] },
-  { id: 'g-am', name: 'Gerencia Asuntos Mineros (GAM)', isActive: false, areas: [] },
+
   { id: 'g-co', name: 'Gerencia Comercial (GC)', isActive: false, areas: [] },
-  { id: 'g-au', name: 'Gerencia Auditoría (GA)', isActive: false, areas: [] },
-  { id: 'g-le', name: 'Gerencia Legal (GL)', isActive: false, areas: [] },
 ];

@@ -1,7 +1,0 @@
-{
-  "name": "Gestor de Documentos",
-  "description": "Sistema de gestión documental con integración simulada de SharePoint, búsqueda avanzada y análisis de IA.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,13 +11,24 @@
       theme: {
         extend: {
           colors: {
+            ceim: {
+              blue: '#041e42',
+              yellow: '#f1b434',
+              orange: '#DF5400',
+              pantoneBlack7: '#3D3935',
+              gray70: '#4D4D4D',
+              gray30: '#B3B3B3',
+              p101_16: '#051E24',
+              p103_16: '#212C56',
+            },
             brand: {
-              primary: '#041e42', 
-              secondary: '#f1e434',
-              dark: '#1a1a1a',
-              gray: '#f4f4f4',
-              border: '#e0e0e0',
-              sidebar: '#f8f8f8'
+              primary: '#041e42', // Azul principal
+              secondary: '#f1b434', // Amarillo
+              accent: '#DF5400', // Naranja
+              dark: '#3D3935', // Pantone Black 7
+              gray: '#B3B3B3', // K: 30
+              border: '#4D4D4D', // K: 70
+              sidebar: '#051E24' // Pantone P 101-16 U
             },
             sharepoint: '#0078d4',
           }
@@ -24,7 +36,7 @@
       }
     }
   </script>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
     "react/": "https://esm.sh/react@^19.2.4/",
@@ -34,27 +46,31 @@
   }
 }
 </script>
-<style>
-  /* Custom scrollbar for better look */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #c1c1c1; 
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8; 
-  }
-</style>
+  <style>
+    /* scrollbar customizada*/
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+  </style>
 </head>
+
 <body class="bg-white text-gray-900 font-sans antialiased h-screen flex overflow-hidden">
   <div id="root" class="w-full h-full flex"></div>
-  <!-- Use ES Module for the React entry point -->
   <script type="module" src="./index.tsx"></script>
 </body>
+
 </html>
